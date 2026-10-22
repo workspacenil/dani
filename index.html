@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dani Pascal Soler | Atletismo de Élite & Experiencia Cinética</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #090a0f;
+      --bg-card: rgba(18, 20, 29, 0.75);
+      --bg-card-hover: rgba(26, 30, 44, 0.9);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(0, 240, 255, 0.3);
+      --tartan: #ff3355;
+      --tartan-glow: rgba(255, 51, 85, 0.4);
+      --cyan: #00f0ff;
+      --cyan-glow: rgba(0, 240, 255, 0.4);
+      --gold: #ffbe0b;
+      --gold-glow: rgba(255, 190, 11, 0.4);
+      --text: #f0f3f8;
+      --text-muted: #8e9bb0;
+      --track-lane: rgba(255, 255, 255, 0.15);
+      --accent-gradient: linear-gradient(135deg, #ff3355 0%, #ff6b35 50%, #00f0ff 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      cursor: default;
+      position: relative;
+    }
+
+    /* Custom Satisfying Cursor */
+    .custom-cursor {
+      position: fixed;
+      width: 28px;
+      height: 28px;
+      border: 2px solid var(--cyan);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: width 0.18s ease-out, height 0.18s ease-out, border-color 0.2s, background-color 0.2s, transform 0.08s ease-out;
+      z-index: 9999;
+      mix-blend-mode: screen;
+    }
+    .custom-cursor-dot {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 10000;
+      box-shadow: 0 0 10px #fff, 0 0 20px var(--cyan);
+    }
+    .cursor-hover {
+      width: 52px;
+      height: 52px;
+      background-color: rgba(0, 240, 255, 0.12);
+      border-color: #ff3355;
+    }
+
+    /* Ambient Background Track Grid */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 50% 10%, rgba(255, 51, 85, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 85% 60%, rgba(0, 240, 255, 0.08) 0%, transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.25rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(9, 10, 15, 0.7);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ff3355, #00f0ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+      box-shadow: 0 0 24px rgba(255, 51, 85, 0.4);
+      color: #fff;
+    }
+
+    .brand-info h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #ffffff, #8e9bb0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-info span {
+      font-size: 0.78rem;
+      color: var(--cyan);
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--cyan);
+      animation: pulse 1.6s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.6); opacity: 0.5; }
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-pill:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--cyan);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .btn-pill:active {
+      transform: scale(0.96);
+    }
+
+    .btn-pill.active {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* Container */
+    main {
+      position: relative;
+      z-index: 10;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 6.5rem 2rem 4rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.4rem 1rem;
+      background: rgba(255, 51, 85, 0.12);
+      border: 1px solid rgba(255, 51, 85, 0.3);
+      border-radius: 999px;
+      color: #ff6b81;
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: 'Space Grotesk', monospace;
+      letter-spacing: 1px;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 0 15px rgba(255, 51, 85, 0.2);
+    }
+
+    .hero-title {
+      font-size: 3.8rem;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title .name-highlight {
+      background: linear-gradient(135deg, #ffffff 30%, #ff3355 70%, #00f0ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff3355, #ff6b35);
+      border: none;
+      color: #fff;
+      padding: 0.9rem 2rem;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(255, 51, 85, 0.45);
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 38px rgba(255, 51, 85, 0.6);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.96);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 0.9rem 1.8rem;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
+    }
+
+    /* Kinetic Runner Canvas Container */
+    .canvas-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(25px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: border-color 0.3s;
+    }
+
+    .canvas-card:hover {
+      border-color: rgba(0, 240, 255, 0.35);
+    }
+
+    .canvas-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .canvas-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      font-family: 'Space Grotesk', monospace;
+      letter-spacing: 1.5px;
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .canvas-controls-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tag-live {
+      padding: 3px 8px;
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid var(--cyan);
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 1px;
+    }
+
+    #runnerCanvas {
+      width: 100%;
+      height: 270px;
+      border-radius: 18px;
+      background: radial-gradient(ellipse at 50% 90%, #171a29 0%, #0c0e17 100%);
+      display: block;
+      cursor: crosshair;
+    }
+
+    .canvas-interactive-panel {
+      margin-top: 1.25rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .slider-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.85rem 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .slider-val {
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    input[type=range] {
+      width: 100%;
+      -webkit-appearance: none;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      outline: none;
+      transition: background 0.2s;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--cyan);
+      cursor: pointer;
+      box-shadow: 0 0 12px var(--cyan);
+      transition: transform 0.15s ease, background 0.2s;
+    }
+
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.3);
+      background: #fff;
+    }
+
+    /* Bento Grid */
+    .bento-section-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .bento-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.75rem;
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255, 255, 255, 0.06), transparent 40%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .bento-card:hover::before {
+      opacity: 1;
+    }
+
+    .bento-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      transform: translateY(-3px);
+    }
+
+    /* Card spans */
+    .col-4 { grid-column: span 4; }
+    .col-5 { grid-column: span 5; }
+    .col-6 { grid-column: span 6; }
+    .col-7 { grid-column: span 7; }
+    .col-8 { grid-column: span 8; }
+    .col-12 { grid-column: span 12; }
+
+    /* Personal Records Interactive Card */
+    .pb-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .pb-item {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 16px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .pb-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--tartan);
+      transform: scale(1.015);
+      box-shadow: 0 6px 20px rgba(255, 51, 85, 0.15);
+    }
+
+    .pb-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .pb-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .icon-100 { background: rgba(255, 51, 85, 0.2); color: #ff3355; border: 1px solid rgba(255, 51, 85, 0.4); }
+    .icon-200 { background: rgba(0, 240, 255, 0.2); color: #00f0ff; border: 1px solid rgba(0, 240, 255, 0.4); }
+    .icon-400 { background: rgba(255, 190, 11, 0.2); color: #ffbe0b; border: 1px solid rgba(255, 190, 11, 0.4); }
+
+    .pb-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .pb-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .pb-time {
+      text-align: right;
+    }
+
+    .pb-digits {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+
+    .pb-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #2ed573;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Interactive Reaction Time Mini Game */
+    .reaction-box {
+      background: radial-gradient(circle at 50% 50%, rgba(20, 25, 40, 0.8) 0%, rgba(12, 14, 22, 0.95) 100%);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      min-height: 240px;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reaction-box.waiting {
+      background: radial-gradient(circle, #ff3355 0%, #a80024 100%);
+      box-shadow: 0 0 50px rgba(255, 51, 85, 0.5);
+    }
+
+    .reaction-box.go {
+      background: radial-gradient(circle, #00f0ff 0%, #0084ff 100%);
+      box-shadow: 0 0 70px rgba(0, 240, 255, 0.7);
+    }
+
+    .reaction-state-text {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .reaction-hint {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      max-width: 280px;
+    }
+
+    .reaction-time-display {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 3rem;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+      margin: 0.5rem 0;
+    }
+
+    /* Rhythmic Metronome / Cadence Generator */
+    .cadence-tap-area {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .tap-button {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(255, 51, 85, 0.2));
+      border: 2px solid var(--cyan);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
+      transition: all 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .tap-button:active {
+      transform: scale(0.9);
+      background: rgba(0, 240, 255, 0.4);
+      box-shadow: 0 0 40px var(--cyan);
+    }
+
+    .tap-button span {
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .tap-button small {
+      font-size: 0.65rem;
+      color: var(--cyan);
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    .cadence-readout {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .cadence-subtext {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Medallero 3D & Trofeos */
+    .medals-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .medal-item {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .medal-item:hover {
+      transform: translateY(-6px) scale(1.03);
+      border-color: var(--gold);
+      box-shadow: 0 12px 30px rgba(255, 190, 11, 0.2);
+    }
+
+    .medal-disc {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 0.85rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      position: relative;
+      transition: transform 0.5s ease;
+    }
+
+    .medal-item:hover .medal-disc {
+      transform: rotateY(180deg) scale(1.1);
+    }
+
+    .disc-gold { background: linear-gradient(135deg, #ffe066, #ffbe0b, #d48b00); box-shadow: 0 0 25px rgba(255, 190, 11, 0.4); color: #fff; }
+    .disc-silver { background: linear-gradient(135deg, #ffffff, #cfd9df, #708090); box-shadow: 0 0 25px rgba(255, 255, 255, 0.3); color: #111; }
+    .disc-bronze { background: linear-gradient(135deg, #e59866, #d35400, #a04000); box-shadow: 0 0 25px rgba(211, 84, 0, 0.3); color: #fff; }
+
+    .medal-item h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .medal-item p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Biomechanics HUD */
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .telemetry-item {
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 1.1rem;
+    }
+
+    .telemetry-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-family: 'Space Grotesk', monospace;
+      letter-spacing: 1px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .telemetry-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 0.4rem 0 0.6rem;
+      color: #fff;
+    }
+
+    .telemetry-bar-wrap {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .telemetry-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--tartan));
+      transition: width 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* Spikes Customizer */
+    .spikes-preview {
+      width: 100%;
+      height: 180px;
+      background: radial-gradient(ellipse at center, rgba(30, 36, 54, 0.8) 0%, rgba(10, 12, 18, 0.95) 100%);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+
+    .spikes-svg {
+      width: 85%;
+      height: auto;
+      filter: drop-shadow(0 15px 25px rgba(0, 240, 255, 0.3));
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .spikes-preview:hover .spikes-svg {
+      transform: scale(1.06) rotate(-3deg);
+    }
+
+    .spikes-options {
+      display: flex;
+      gap: 8px;
+    }
+
+    .spike-chip {
+      flex: 1;
+      padding: 0.6rem 0.5rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .spike-chip.active {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* Quote & Philosophy banner */
+    .quote-banner {
+      background: linear-gradient(135deg, rgba(255, 51, 85, 0.1), rgba(0, 240, 255, 0.08));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      padding: 2.5rem 3rem;
+      margin-bottom: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-banner::after {
+      content: '⚡';
+      position: absolute;
+      right: 2rem;
+      bottom: -1rem;
+      font-size: 9rem;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+
+    .quote-text {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #fff;
+      max-width: 800px;
+    }
+
+    .quote-author {
+      font-size: 0.95rem;
+      color: var(--cyan);
+      font-family: 'Space Grotesk', monospace;
+      margin-top: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      background: rgba(9, 10, 15, 0.8);
+      backdrop-filter: blur(20px);
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--cyan);
+    }
+
+    /* Confetti Particle Canvas overlay */
+    #fxCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .col-4, .col-5, .col-6, .col-7, .col-8 {
+        grid-column: span 12;
+      }
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      header {
+        padding: 1.25rem 1.5rem;
+      }
+      .quote-banner {
+        flex-direction: column;
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Satisfying Cursor -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+  <!-- Background decorative grid -->
+  <div class="bg-grid"></div>
+
+  <!-- Ambient FX & Sparkle Canvas -->
+  <canvas id="fxCanvas"></canvas>
+
+  <!-- Sticky Glassmorphic Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-avatar">DP</div>
+      <div class="brand-info">
+        <h1>Dani Pascal Soler</h1>
+        <span><div class="pulse-dot"></div> ATLETA DE ÉLITE • 100M / 200M</span>
+      </div>
+    </div>
+    
+    <div class="header-controls">
+      <button class="btn-pill" id="audioToggle" title="Sonido cinético ASMR y sintetizador">
+        <span id="audioIcon">🔊</span>
+        <span id="audioText">Audio ASMR: On</span>
+      </button>
+      <button class="btn-pill" id="flowModeBtn" title="Modo Hipnótico / Flow State">
+        <span>🌀</span>
+        <span>Flow State</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Experience -->
+  <main>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>⚡ VELOCIDAD PURA & BIOMECÁNICA</span>
+        </div>
+        <h2 class="hero-title">
+          La física del sprint,
+          <span class="name-highlight">Dani Pascal Soler.</span>
+        </h2>
+        <p class="hero-subtitle">
+          Cada zancada es un acto de precisión milimétrica. Explosividad en los tacos de salida, cadencia perfecta y sincronía aerodinámica diseñada para quebrar las barreras del cronómetro.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn-primary" id="btnSprintSim">
+            <span>⚡ Lanzar Sprint 100m</span>
+          </button>
+          <button class="btn-secondary" id="btnExploreBio">
+            <span>🔬 Explorar Telemetría</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Real-time Kinetic Runner Simulation -->
+      <div class="canvas-card" id="runnerCard">
+        <div class="canvas-header">
+          <div class="canvas-title">
+            <span>🏃 BIOMECÁNICA DE ZANCADA EN VIVO</span>
+          </div>
+          <div class="canvas-controls-bar">
+            <span class="tag-live">60 FPS REALTIME</span>
+          </div>
+        </div>
+
+        <canvas id="runnerCanvas" width="600" height="270"></canvas>
+
+        <div class="canvas-interactive-panel">
+          <div class="slider-box">
+            <div class="slider-label">
+              <span>Cadencia (Frecuencia)</span>
+              <span class="slider-val" id="cadenceVal">215 SPM</span>
+            </div>
+            <input type="range" id="cadenceSlider" min="120" max="270" value="215" step="1">
+          </div>
+
+          <div class="slider-box">
+            <div class="slider-label">
+              <span>Longitud de Zancada</span>
+              <span class="slider-val" id="strideVal">2.38 m</span>
+            </div>
+            <input type="range" id="strideSlider" min="1.50" max="2.80" value="2.38" step="0.02">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento Grid Showcase -->
+    <h3 class="bento-section-title">
+      <span>📊 Rendimiento & Experiencia Interactiva</span>
+    </h3>
+
+    <div class="bento-grid">
+
+      <!-- Bento Card 1: Personal Bests (PB) -->
+      <div class="bento-card col-6" id="cardPB">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
+          <h4 style="font-size: 1.25rem; font-weight: 800;">⏱️ Marcas Personales Oficiales</h4>
+          <span style="font-size:0.75rem; color:var(--cyan); font-family:'Space Grotesk'; font-weight:600;">FEDERACIÓN DE ATLETISMO</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Haz clic en cada distancia para simular el ritmo del cronómetro con respuesta háptica.
+        </p>
+
+        <div class="pb-list">
+          <div class="pb-item" data-dist="100" data-time="9.84" data-pace="42.8 km/h">
+            <div class="pb-info">
+              <div class="pb-icon icon-100">100</div>
+              <div>
+                <div class="pb-title">100 Metros Lisos</div>
+                <div class="pb-sub">Viento: +1.2 m/s • Reacción: 0.118s</div>
+              </div>
+            </div>
+            <div class="pb-time">
+              <div class="pb-digits">9.84s</div>
+              <div class="pb-badge">Récord de Campeonato</div>
+            </div>
+          </div>
+
+          <div class="pb-item" data-dist="200" data-time="19.92" data-pace="39.6 km/h">
+            <div class="pb-info">
+              <div class="pb-icon icon-200">200</div>
+              <div>
+                <div class="pb-title">200 Metros Lisos</div>
+                <div class="pb-sub">Curva explosiva • Deceleración mínima</div>
+              </div>
+            </div>
+            <div class="pb-time">
+              <div class="pb-digits">19.92s</div>
+              <div class="pb-badge">Sub-20s Elite</div>
+            </div>
+          </div>
+
+          <div class="pb-item" data-dist="400" data-time="44.50" data-pace="32.4 km/h">
+            <div class="pb-info">
+              <div class="pb-icon icon-400">400</div>
+              <div>
+                <div class="pb-title">400 Metros Lisos</div>
+                <div class="pb-sub">Ácido láctico al límite • Ritmo sostenido</div>
+              </div>
+            </div>
+            <div class="pb-time">
+              <div class="pb-digits">44.50s</div>
+              <div class="pb-badge">Marca Internacional</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento Card 2: Reaction Time Test (Starting Blocks) -->
+      <div class="bento-card col-6">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
+          <h4 style="font-size: 1.25rem; font-weight: 800;">🎯 Simulador de Salida de Tacos</h4>
+          <span style="font-size:0.75rem; color:#ff6b81; font-family:'Space Grotesk'; font-weight:600;">TEST DE REACCIÓN</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Dani Pascal reacciona al disparo en solo <strong>0.118 s</strong>. ¿Podrás acercarte?
+        </p>
+
+        <div class="reaction-box" id="reactionBox">
+          <div class="reaction-state-text" id="reactionTitle">A SUS PUESTOS...</div>
+          <div class="reaction-time-display" id="reactionTime">--- ms</div>
+          <div class="reaction-hint" id="reactionDesc">Haz clic para preparar la salida. Al ponerse en verde, haz clic de inmediato.</div>
+        </div>
+      </div>
+
+      <!-- Bento Card 3: Biomechanical Telemetry & Force Vectors -->
+      <div class="bento-card col-7">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
+          <h4 style="font-size: 1.25rem; font-weight: 800;">📈 Telemetría de Carrera en Tiempo Real</h4>
+          <span style="font-size:0.75rem; color:var(--cyan); font-family:'Space Grotesk'; font-weight:600;">SENSORES INERCIALES</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          Parámetros biomecánicos medidos en laboratorio de alto rendimiento para Dani Pascal Soler.
+        </p>
+
+        <div class="telemetry-grid">
+          <div class="telemetry-item">
+            <div class="telemetry-label">
+              <span>Tiempo de Contacto</span>
+              <span>85 ms</span>
+            </div>
+            <div class="telemetry-value" id="telContact">85 <small style="font-size:0.9rem; color:var(--text-muted);">ms</small></div>
+            <div class="telemetry-bar-wrap">
+              <div class="telemetry-bar-fill" style="width: 88%;"></div>
+            </div>
+          </div>
+
+          <div class="telemetry-item">
+            <div class="telemetry-label">
+              <span>Fuerza de Impulso</span>
+              <span>4.4 G</span>
+            </div>
+            <div class="telemetry-value" id="telForce">3,250 <small style="font-size:0.9rem; color:var(--text-muted);">N</small></div>
+            <div class="telemetry-bar-wrap">
+              <div class="telemetry-bar-fill" style="width: 94%;"></div>
+            </div>
+          </div>
+
+          <div class="telemetry-item">
+            <div class="telemetry-label">
+              <span>Velocidad Punta</span>
+              <span>43.6 km/h</span>
+            </div>
+            <div class="telemetry-value" id="telSpeed">12.11 <small style="font-size:0.9rem; color:var(--text-muted);">m/s</small></div>
+            <div class="telemetry-bar-wrap">
+              <div class="telemetry-bar-fill" style="width: 96%;"></div>
+            </div>
+          </div>
+
+          <div class="telemetry-item">
+            <div class="telemetry-label">
+              <span>Eficiencia de Oscilación</span>
+              <span>96.8%</span>
+            </div>
+            <div class="telemetry-value" id="telOsc">3.8 <small style="font-size:0.9rem; color:var(--text-muted);">cm</small></div>
+            <div class="telemetry-bar-wrap">
+              <div class="telemetry-bar-fill" style="width: 91%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento Card 4: Cadence Metronome / Tap BPM -->
+      <div class="bento-card col-5">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
+          <h4 style="font-size: 1.25rem; font-weight: 800;">🥁 Ritmo de Zancada (Tap BPM)</h4>
+          <span style="font-size:0.75rem; color:var(--gold); font-family:'Space Grotesk'; font-weight:600;">ASMR CADENCE</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Siente el ritmo hipnótico de los pasos de sprint. Toca el botón a tu velocidad.
+        </p>
+
+        <div class="cadence-tap-area">
+          <div class="tap-button" id="tapButton">
+            <span>TAP</span>
+            <small>RITMO</small>
+          </div>
+          <div class="cadence-readout" id="bpmDisplay">215 <span style="font-size:1.1rem; color:var(--text-muted); font-weight:400;">SPM</span></div>
+          <div class="cadence-subtext" id="bpmStatus">Ritmo óptimo de sprint supersónico</div>
+        </div>
+      </div>
+
+      <!-- Bento Card 5: Interactive Medals Showcase -->
+      <div class="bento-card col-7">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
+          <h4 style="font-size: 1.25rem; font-weight: 800;">🏅 Medallero & Triunfos Destacados</h4>
+          <span style="font-size:0.75rem; color:var(--gold); font-family:'Space Grotesk'; font-weight:600;">PODIOS</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          Pasa el cursor y haz clic sobre las medallas para rotarlas y liberar destellos dorados.
+        </p>
+
+        <div class="medals-container">
+          <div class="medal-item" data-medal="oro">
+            <div class="medal-disc disc-gold">🥇</div>
+            <h4>Oro Nacional 100m</h4>
+            <p>Gran Premio de Velocidad • 9.84s</p>
+          </div>
+
+          <div class="medal-item" data-medal="oro">
+            <div class="medal-disc disc-gold">🥇</div>
+            <h4>Oro 200m Indoor</h4>
+            <p>Campeonato Iberoamericano • 19.92s</p>
+          </div>
+
+          <div class="medal-item" data-medal="plata">
+            <div class="medal-disc disc-silver">🥈</div>
+            <h4>Plata Relevos 4x100</h4>
+            <p>Torneo Continental de Atletismo</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento Card 6: Spikes & Carbon Plate Customizer -->
+      <div class="bento-card col-5">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
+          <h4 style="font-size: 1.25rem; font-weight: 800;">👟 Zapatillas con Placa de Carbono</h4>
+          <span style="font-size:0.75rem; color:var(--cyan); font-family:'Space Grotesk'; font-weight:600;">EQUIPAMIENTO</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Las zapatillas a medida de Dani Pascal. Personaliza el compuesto de tracción:
+        </p>
+
+        <div class="spikes-preview" id="spikesBox">
+          <svg class="spikes-svg" id="spikesSvg" viewBox="0 0 320 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="spikeGrad" x1="0" y1="0" x2="320" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#ff3355" id="spikeColorA" />
+                <stop offset="70%" stop-color="#ff6b35" id="spikeColorB" />
+                <stop offset="100%" stop-color="#00f0ff" id="spikeColorC" />
+              </linearGradient>
+              <filter id="spikeGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="6" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+            <!-- Sole / Carbon curve -->
+            <path d="M 30 95 C 70 95, 120 102, 190 98 C 240 94, 275 80, 305 60 C 295 85, 250 110, 180 112 C 100 114, 50 106, 25 102 Z" fill="#151722" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+            <!-- Carbon Plate Spring -->
+            <path d="M 40 96 C 100 96, 170 104, 235 90 C 275 80, 298 62, 304 60 C 285 75, 235 98, 170 100 C 95 102, 45 98, 40 96 Z" fill="url(#spikeGrad)" filter="url(#spikeGlow)"/>
+            <!-- Upper Shoe Body -->
+            <path d="M 32 94 C 28 85, 40 65, 80 55 C 130 42, 160 50, 195 62 C 225 72, 270 65, 300 62 C 290 75, 270 82, 235 88 C 170 98, 90 95, 32 94 Z" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+            <!-- Dynamic Stripes -->
+            <path d="M 120 54 Q 150 70 170 88" stroke="#00f0ff" stroke-width="4" stroke-linecap="round"/>
+            <path d="M 138 52 Q 168 68 188 86" stroke="#ff3355" stroke-width="3" stroke-linecap="round"/>
+            <!-- Spikes (pins) -->
+            <circle cx="230" cy="102" r="3.5" fill="#ffbe0b" />
+            <polygon points="230,102 228,114 232,114" fill="#ffbe0b" />
+            <circle cx="255" cy="98" r="3.5" fill="#ffbe0b" />
+            <polygon points="255,98 253,110 257,110" fill="#ffbe0b" />
+            <circle cx="280" cy="88" r="3.5" fill="#ffbe0b" />
+            <polygon points="280,88 278,98 282,98" fill="#ffbe0b" />
+          </svg>
+        </div>
+
+        <div class="spikes-options">
+          <div class="spike-chip active" data-plate="carbon">Carbon Matrix</div>
+          <div class="spike-chip" data-plate="titanium">Titanium Flex</div>
+          <div class="spike-chip" data-plate="turbo">Hyper Neon</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Satisfying Athletics Philosophy Banner -->
+    <section class="quote-banner">
+      <div>
+        <div class="quote-text">
+          "El verdadero sprint dura apenas diez segundos, pero en ese intervalo, el tiempo se ralentiza, el cuerpo entra en armonía cuántica y la pista se convierte en pura satisfacción cinética."
+        </div>
+        <div class="quote-author">
+          <span>— Dani Pascal Soler</span>
+          <span>• Campeón & Velocista</span>
+        </div>
+      </div>
+      <button class="btn-primary" id="btnSoundTrigger" style="white-space: nowrap;">
+        ✨ Pulso Armónico
+      </button>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+      <div class="brand-avatar" style="width:32px; height:32px; font-size:0.9rem;">DP</div>
+      <div>
+        <strong>Dani Pascal Soler</strong> • Atletismo de Alto Rendimiento
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#runnerCanvas">Simulador de Carrera</a>
+      <a href="#cardPB">Marcas Personales</a>
+      <a href="#reactionBox">Test de Reacción</a>
+      <a href="#" id="scrollTopLink">Subir al Inicio ↑</a>
+    </div>
+  </footer>
+
+  <!-- Web Audio & Interactive JavaScript Logic -->
+  <script>
+    // --- 1. Synthesizer & Web Audio Engine (Pure ASMR & Audio Feedback) ---
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.enabled = true;
+      }
+
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
+        }
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      // Satisfying pop / click sound
+      playPop(freq = 600, duration = 0.08) {
+        if (!this.enabled) return;
+        this.init();
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(freq * 0.35, this.ctx.currentTime + duration);
+
+          gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start();
+          osc.stop(this.ctx.currentTime + duration);
+        } catch(e) {}
+      }
+
+      // Stride spike contact sound (subtle satisfying thump + air sweep)
+      playFootstep() {
+        if (!this.enabled) return;
+        this.init();
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(140, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(45, this.ctx.currentTime + 0.06);
+
+          gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.06);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.06);
+        } catch(e) {}
+      }
+
+      // Starting block acoustic chime / gong
+      playStartingGun() {
+        if (!this.enabled) return;
+        this.init();
+        try {
+          const now = this.ctx.currentTime;
+          // Sub bass thump
+          const osc1 = this.ctx.createOscillator();
+          const gain1 = this.ctx.createGain();
+          osc1.type = 'sine';
+          osc1.frequency.setValueAtTime(180, now);
+          osc1.frequency.exponentialRampToValueAtTime(30, now + 0.4);
+          gain1.gain.setValueAtTime(0.5, now);
+          gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+          osc1.connect(gain1);
+          gain1.connect(this.ctx.destination);
+          osc1.start();
+          osc1.stop(now + 0.4);
+
+          // Bright high attack snap
+          const osc2 = this.ctx.createOscillator();
+          const gain2 = this.ctx.createGain();
+          osc2.type = 'sawtooth';
+          osc2.frequency.setValueAtTime(880, now);
+          osc2.frequency.exponentialRampToValueAtTime(220, now + 0.1);
+          gain2.gain.setValueAtTime(0.3, now);
+          gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+          osc2.connect(gain2);
+          gain2.connect(this.ctx.destination);
+          osc2.start();
+          osc2.stop(now + 0.1);
+        } catch(e) {}
+      }
+
+      // Harmonious celebratory chord (C major / E major chime)
+      playVictoryChord() {
+        if (!this.enabled) return;
+        this.init();
+        const chord = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+        chord.forEach((freq, idx) => {
+          setTimeout(() => {
+            try {
+              const osc = this.ctx.createOscillator();
+              const gain = this.ctx.createGain();
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+              gain.gain.setValueAtTime(0.18, this.ctx.currentTime);
+              gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.7);
+              osc.connect(gain);
+              gain.connect(this.ctx.destination);
+              osc.start();
+              osc.stop(this.ctx.currentTime + 0.7);
+            } catch(e) {}
+          }, idx * 60);
+        });
+      }
+    }
+
+    const sound = new SoundEngine();
+
+    // Toggle Audio
+    const audioBtn = document.getElementById('audioToggle');
+    const audioIcon = document.getElementById('audioIcon');
+    const audioText = document.getElementById('audioText');
+
+    audioBtn.addEventListener('click', () => {
+      sound.enabled = !sound.enabled;
+      if (sound.enabled) {
+        sound.init();
+        sound.playPop(800, 0.1);
+        audioIcon.textContent = '🔊';
+        audioText.textContent = 'Audio ASMR: On';
+        audioBtn.classList.remove('active');
+      } else {
+        audioIcon.textContent = '🔇';
+        audioText.textContent = 'Audio: Silencio';
+        audioBtn.classList.add('active');
+      }
+    });
+
+    // --- 2. Custom Interactive Satisfying Cursor ---
+    const cursor = document.getElementById('customCursor');
+    const cursorDot = document.getElementById('customCursorDot');
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let curX = mouseX;
+    let curY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.left = `${mouseX}px`;
+      cursorDot.style.top = `${mouseY}px`;
+    });
+
+    function animateCursor() {
+      curX += (mouseX - curX) * 0.18;
+      curY += (mouseY - curY) * 0.18;
+      cursor.style.left = `${curX}px`;
+      cursor.style.top = `${curY}px`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Cursor hover effects on interactive elements
+    const interactiveElements = document.querySelectorAll('button, input, .pb-item, .medal-item, .reaction-box, .tap-button, .spike-chip, a');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('cursor-hover');
+        sound.playPop(420, 0.03);
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('cursor-hover');
+      });
+    });
+
+    // 3D Card mouse tilt lighting effect
+    const cards = document.querySelectorAll('.bento-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+
+    // --- 3. Kinetic Athletic Runner Canvas Simulation ---
+    const canvas = document.getElementById('runnerCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = canvas.parentElement.clientWidth - 48;
+    let height = canvas.height = 270;
+
+    window.addEventListener('resize', () => {
+      if (canvas.parentElement) {
+        width = canvas.width = canvas.parentElement.clientWidth - 48;
+      }
+    });
+
+    let cadence = 215; // steps per min
+    let strideLength = 2.38; // meters
+    let animTime = 0;
+    let lastStepTime = 0;
+
+    // Track surface lines & particles
+    const trackParticles = [];
+    for (let i = 0; i < 40; i++) {
+      trackParticles.push({
+        x: Math.random() * width,
+        y: 190 + Math.random() * 55,
+        speed: 4 + Math.random() * 8,
+        len: 15 + Math.random() * 45,
+        alpha: 0.15 + Math.random() * 0.35,
+        color: Math.random() > 0.5 ? '#ff3355' : '#00f0ff'
+      });
+    }
+
+    // Foot impact particles
+    const impactSparks = [];
+
+    function triggerImpact(x, y) {
+      sound.playFootstep();
+      for (let i = 0; i < 8; i++) {
+        const angle = -Math.PI * 0.5 + (Math.random() - 0.5) * 1.6;
+        const speed = 2 + Math.random() * 5;
+        impactSparks.push({
+          x: x,
+          y: y,
+          vx: Math.cos(angle) * speed - 3,
+          vy: Math.sin(angle) * speed,
+          life: 1.0,
+          decay: 0.04 + Math.random() * 0.04,
+          color: Math.random() > 0.3 ? '#00f0ff' : '#ffbe0b',
+          size: 2.5 + Math.random() * 2.5
+        });
+      }
+    }
+
+    function drawRunner() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw perspective track surface
+      const groundY = 220;
+      const grad = ctx.createLinearGradient(0, groundY - 20, 0, height);
+      grad.addColorStop(0, 'rgba(255, 51, 85, 0.05)');
+      grad.addColorStop(0.5, 'rgba(255, 51, 85, 0.22)');
+      grad.addColorStop(1, 'rgba(10, 12, 18, 0.95)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, groundY - 10, width, height - groundY + 10);
+
+      // Track Lane Glow Lines moving backward to create intense speed sensation
+      ctx.lineWidth = 2;
+      trackParticles.forEach(p => {
+        p.x -= (cadence / 60) * 3.5;
+        if (p.x < -60) p.x = width + 30;
+        ctx.strokeStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p.x + p.len, p.y);
+        ctx.stroke();
+      });
+      ctx.globalAlpha = 1.0;
+
+      // Solid baseline lane
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(0, groundY);
+      ctx.lineTo(width, groundY);
+      ctx.stroke();
+
+      // Kinematic Runner Model (Procedural Silhouette of Dani Pascal)
+      const runnerX = width * 0.42;
+      const stepFreq = (cadence / 60) * Math.PI * 2;
+      animTime += 0.024 * (cadence / 180);
+
+      const cycle = animTime * stepFreq;
+      const verticalBob = Math.sin(cycle * 2) * 9;
+      const hipX = runnerX;
+      const hipY = groundY - 78 + verticalBob;
+
+      // Leg 1 (Front / Near)
+      const leg1Phase = cycle;
+      const knee1Angle = Math.sin(leg1Phase) * 0.9 + 0.3;
+      const knee1X = hipX + Math.sin(leg1Phase) * 28 + 10;
+      const knee1Y = hipY + 34 + Math.cos(leg1Phase) * 12;
+
+      const foot1Angle = leg1Phase - 0.4;
+      const foot1X = knee1X + Math.sin(foot1Angle) * 32 + (cadence > 200 ? 12 : 5);
+      const foot1Y = Math.min(groundY, knee1Y + Math.cos(foot1Angle) * 32);
+
+      // Foot impact detection
+      if (Math.abs(foot1Y - groundY) < 2 && animTime - lastStepTime > 0.15) {
+        lastStepTime = animTime;
+        triggerImpact(foot1X, groundY);
+      }
+
+      // Leg 2 (Back / Far)
+      const leg2Phase = cycle + Math.PI;
+      const knee2X = hipX + Math.sin(leg2Phase) * 28 + 10;
+      const knee2Y = hipY + 34 + Math.cos(leg2Phase) * 12;
+      const foot2Angle = leg2Phase - 0.4;
+      const foot2X = knee2X + Math.sin(foot2Angle) * 32 + (cadence > 200 ? 12 : 5);
+      const foot2Y = Math.min(groundY, knee2Y + Math.cos(foot2Angle) * 32);
+
+      // Torso & Head
+      const spineLean = 0.32; // aggressive sprint forward lean
+      const chestX = hipX + Math.sin(spineLean) * 38;
+      const chestY = hipY - Math.cos(spineLean) * 38;
+      const headX = chestX + 16;
+      const headY = chestY - 22;
+
+      // Arms (Pumping in counter-balance to legs)
+      const arm1Phase = cycle + Math.PI;
+      const elbow1X = chestX - Math.sin(arm1Phase) * 22;
+      const elbow1Y = chestY + 16 + Math.cos(arm1Phase) * 10;
+      const hand1X = elbow1X + Math.sin(arm1Phase + 0.5) * 24 + 10;
+      const hand1Y = elbow1Y - Math.cos(arm1Phase + 0.5) * 18;
+
+      const arm2Phase = cycle;
+      const elbow2X = chestX - Math.sin(arm2Phase) * 22;
+      const elbow2Y = chestY + 16 + Math.cos(arm2Phase) * 10;
+      const hand2X = elbow2X + Math.sin(arm2Phase + 0.5) * 24 + 10;
+      const hand2Y = elbow2Y - Math.cos(arm2Phase + 0.5) * 18;
+
+      // Draw Far Arm
+      ctx.lineWidth = 5;
+      ctx.strokeStyle = 'rgba(0, 240, 255, 0.4)';
+      ctx.beginPath();
+      ctx.moveTo(chestX, chestY);
+      ctx.lineTo(elbow2X, elbow2Y);
+      ctx.lineTo(hand2X, hand2Y);
+      ctx.stroke();
+
+      // Draw Far Leg
+      ctx.lineWidth = 6;
+      ctx.strokeStyle = 'rgba(255, 51, 85, 0.45)';
+      ctx.beginPath();
+      ctx.moveTo(hipX, hipY);
+      ctx.lineTo(knee2X, knee2Y);
+      ctx.lineTo(foot2X, foot2Y);
+      ctx.stroke();
+
+      // Draw Torso
+      ctx.lineWidth = 9;
+      ctx.strokeStyle = '#f0f3f8';
+      ctx.beginPath();
+      ctx.moveTo(hipX, hipY);
+      ctx.lineTo(chestX, chestY);
+      ctx.stroke();
+
+      // Draw Head with Aerodynamic Visor
+      ctx.fillStyle = '#f0f3f8';
+      ctx.beginPath();
+      ctx.arc(headX, headY, 11, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Visor Glow
+      ctx.fillStyle = '#00f0ff';
+      ctx.shadowColor = '#00f0ff';
+      ctx.shadowBlur = 12;
+      ctx.beginPath();
+      ctx.ellipse(headX + 5, headY - 1, 7, 3, 0.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0; // reset
+
+      // Draw Near Leg with Energy Glow
+      ctx.lineWidth = 7;
+      ctx.strokeStyle = '#ff3355';
+      ctx.shadowColor = '#ff3355';
+      ctx.shadowBlur = 10;
+      ctx.beginPath();
+      ctx.moveTo(hipX, hipY);
+      ctx.lineTo(knee1X, knee1Y);
+      ctx.lineTo(foot1X, foot1Y);
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Foot Spike glow point
+      ctx.fillStyle = '#00f0ff';
+      ctx.beginPath();
+      ctx.arc(foot1X, foot1Y, 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Draw Near Arm
+      ctx.lineWidth = 6;
+      ctx.strokeStyle = '#00f0ff';
+      ctx.shadowColor = '#00f0ff';
+      ctx.shadowBlur = 12;
+      ctx.beginPath();
+      ctx.moveTo(chestX, chestY);
+      ctx.lineTo(elbow1X, elbow1Y);
+      ctx.lineTo(hand1X, hand1Y);
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Aerodynamic Wind Trails / Streamlines behind Dani
+      for (let i = 0; i < 4; i++) {
+        const streamY = headY + 18 * i + Math.sin(cycle + i) * 6;
+        const streamStart = chestX - 30 - i * 10;
+        const streamLen = 50 + (cadence / 270) * 120;
+        const gradStream = ctx.createLinearGradient(streamStart, streamY, streamStart - streamLen, streamY);
+        gradStream.addColorStop(0, 'rgba(0, 240, 255, 0.6)');
+        gradStream.addColorStop(1, 'transparent');
+        ctx.strokeStyle = gradStream;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(streamStart, streamY);
+        ctx.lineTo(streamStart - streamLen, streamY);
+        ctx.stroke();
+      }
+
+      // Render sparks / spike track impacts
+      for (let i = impactSparks.length - 1; i >= 0; i--) {
+        const s = impactSparks[i];
+        s.x += s.vx;
+        s.y += s.vy;
+        s.vy += 0.2; // gravity
+        s.life -= s.decay;
+        if (s.life <= 0) {
+          impactSparks.splice(i, 1);
+          continue;
+        }
+        ctx.fillStyle = s.color;
+        ctx.globalAlpha = s.life;
+        ctx.shadowColor = s.color;
+        ctx.shadowBlur = 8;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+      ctx.globalAlpha = 1.0;
+
+      requestAnimationFrame(drawRunner);
+    }
+    drawRunner();
+
+    // Sliders Interaction
+    const cadenceSlider = document.getElementById('cadenceSlider');
+    const cadenceVal = document.getElementById('cadenceVal');
+    const strideSlider = document.getElementById('strideSlider');
+    const strideVal = document.getElementById('strideVal');
+
+    cadenceSlider.addEventListener('input', (e) => {
+      cadence = parseInt(e.target.value);
+      cadenceVal.textContent = `${cadence} SPM`;
+      sound.playPop(300 + cadence * 2, 0.03);
+      updateTelemetry();
+    });
+
+    strideSlider.addEventListener('input', (e) => {
+      strideLength = parseFloat(e.target.value);
+      strideVal.textContent = `${strideLength.toFixed(2)} m`;
+      sound.playPop(400 + strideLength * 80, 0.03);
+      updateTelemetry();
+    });
+
+    function updateTelemetry() {
+      // Speed (m/s) = (cadence / 60) * strideLength
+      const speedMs = (cadence / 60) * strideLength;
+      const speedKmh = speedMs * 3.6;
+      document.getElementById('telSpeed').innerHTML = `${speedMs.toFixed(2)} <small style="font-size:0.9rem; color:var(--text-muted);">m/s (${speedKmh.toFixed(1)} km/h)</small>`;
+      
+      const contactTime = Math.max(65, Math.round(180 - (cadence * 0.42)));
+      document.getElementById('telContact').innerHTML = `${contactTime} <small style="font-size:0.9rem; color:var(--text-muted);">ms</small>`;
+
+      const forceN = Math.round(speedKmh * 80 + 350);
+      document.getElementById('telForce').innerHTML = `${forceN.toLocaleString()} <small style="font-size:0.9rem; color:var(--text-muted);">N</small>`;
+    }
+
+    // --- 4. Starting Block Reaction Time Game ---
+    const reactionBox = document.getElementById('reactionBox');
+    const reactionTitle = document.getElementById('reactionTitle');
+    const reactionTime = document.getElementById('reactionTime');
+    const reactionDesc = document.getElementById('reactionDesc');
+
+    let reactionState = 'idle'; // 'idle', 'ready', 'waiting', 'active', 'result'
+    let startTime = 0;
+    let timerTimeout = null;
+
+    reactionBox.addEventListener('click', () => {
+      sound.init();
+
+      if (reactionState === 'idle' || reactionState === 'result') {
+        reactionState = 'ready';
+        reactionBox.className = 'reaction-box waiting';
+        reactionTitle.textContent = 'LISTOS...';
+        reactionTime.textContent = '--- ms';
+        reactionDesc.textContent = '¡No hagas clic antes de tiempo! Espera el verde.';
+        sound.playPop(350, 0.15);
+
+        // Random delay between 1.5s and 4.0s
+        const delay = 1500 + Math.random() * 2500;
+        timerTimeout = setTimeout(() => {
+          reactionState = 'active';
+          startTime = performance.now();
+          reactionBox.className = 'reaction-box go';
+          reactionTitle.textContent = '¡¡YA!! ¡DISPARO!';
+          reactionDesc.textContent = '¡HAZ CLIC AHORA MISMO!';
+          sound.playStartingGun();
+        }, delay);
+
+      } else if (reactionState === 'ready') {
+        // False start!
+        clearTimeout(timerTimeout);
+        reactionState = 'result';
+        reactionBox.className = 'reaction-box';
+        reactionTitle.textContent = '❌ SALIDA NULA';
+        reactionTime.textContent = 'FALSA';
+        reactionDesc.textContent = 'Te has adelantado al disparo reglamentario. Haz clic para reintentar.';
+        sound.playPop(180, 0.25);
+
+      } else if (reactionState === 'active') {
+        const diff = performance.now() - startTime;
+        reactionState = 'result';
+        reactionBox.className = 'reaction-box';
+        reactionTitle.textContent = 'TIEMPO DE REACCIÓN';
+        reactionTime.textContent = `${Math.round(diff)} ms`;
+
+        if (diff < 130) {
+          reactionDesc.textContent = '¡Increíble! Reacción sobrehumana al nivel de Dani Pascal Soler (0.118s). ⚡';
+          sound.playVictoryChord();
+          triggerScreenSparkles();
+        } else if (diff < 190) {
+          reactionDesc.textContent = '¡Sensacional! Nivel de velocista de campeonato nacional.';
+          sound.playVictoryChord();
+        } else {
+          reactionDesc.textContent = 'Buen intento. ¡Vuelve a probar para batir el récord!';
+          sound.playPop(500, 0.12);
+        }
+      }
+    });
+
+    // --- 5. Rhythmic Cadence Tap Button (BPM Metronome) ---
+    const tapButton = document.getElementById('tapButton');
+    const bpmDisplay = document.getElementById('bpmDisplay');
+    const bpmStatus = document.getElementById('bpmStatus');
+    const tapTimes = [];
+
+    tapButton.addEventListener('click', () => {
+      sound.playFootstep();
+      sound.playPop(580, 0.04);
+      const now = performance.now();
+      tapTimes.push(now);
+
+      // Keep only last 5 taps
+      if (tapTimes.length > 5) tapTimes.shift();
+
+      if (tapTimes.length >= 2) {
+        let intervals = [];
+        for (let i = 1; i < tapTimes.length; i++) {
+          intervals.push(tapTimes[i] - tapTimes[i - 1]);
+        }
+        const avgInterval = intervals.reduce((a, b) => a + b) / intervals.length;
+        const calculatedBpm = Math.round(60000 / avgInterval);
+
+        if (calculatedBpm >= 90 && calculatedBpm <= 320) {
+          bpmDisplay.innerHTML = `${calculatedBpm} <span style="font-size:1.1rem; color:var(--text-muted); font-weight:400;">SPM</span>`;
+          cadenceSlider.value = calculatedBpm;
+          cadence = calculatedBpm;
+          cadenceVal.textContent = `${calculatedBpm} SPM`;
+          updateTelemetry();
+
+          if (calculatedBpm > 220) {
+            bpmStatus.textContent = '🔥 Cadencia Supersónica de Sprint Mundial';
+          } else if (calculatedBpm > 180) {
+            bpmStatus.textContent = '⚡ Ritmo óptimo de aceleración 100m';
+          } else {
+            bpmStatus.textContent = '🏃 Calentamiento / Trote rítmico';
+          }
+        }
+      }
+    });
+
+    // --- 6. Medals Interactive Sparkle Burst ---
+    const medalItems = document.querySelectorAll('.medal-item');
+    medalItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        sound.playVictoryChord();
+        const rect = item.getBoundingClientRect();
+        triggerBurstAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
+      });
+    });
+
+    // --- 7. Personal Bests Interactive Timer Simulation ---
+    const pbItems = document.querySelectorAll('.pb-item');
+    pbItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const dist = item.dataset.dist;
+        const targetTime = parseFloat(item.dataset.time);
+        const digitsEl = item.querySelector('.pb-digits');
+        sound.playStartingGun();
+
+        let current = 0;
+        const interval = setInterval(() => {
+          current += 0.38;
+          if (current >= targetTime) {
+            current = targetTime;
+            clearInterval(interval);
+            digitsEl.textContent = `${targetTime.toFixed(2)}s`;
+            sound.playVictoryChord();
+          } else {
+            digitsEl.textContent = `${current.toFixed(2)}s`;
+            sound.playPop(600 + current * 40, 0.02);
+          }
+        }, 30);
+      });
+    });
+
+    // --- 8. Carbon Spikes Customizer ---
+    const spikeChips = document.querySelectorAll('.spike-chip');
+    const colorA = document.getElementById('spikeColorA');
+    const colorB = document.getElementById('spikeColorB');
+    const colorC = document.getElementById('spikeColorC');
+    const spikesSvg = document.getElementById('spikesSvg');
+
+    spikeChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        spikeChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        sound.playPop(750, 0.08);
+
+        const plate = chip.dataset.plate;
+        if (plate === 'carbon') {
+          colorA.setAttribute('stop-color', '#ff3355');
+          colorB.setAttribute('stop-color', '#ff6b35');
+          colorC.setAttribute('stop-color', '#00f0ff');
+        } else if (plate === 'titanium') {
+          colorA.setAttribute('stop-color', '#cfd9df');
+          colorB.setAttribute('stop-color', '#ffffff');
+          colorC.setAttribute('stop-color', '#708090');
+        } else if (plate === 'turbo') {
+          colorA.setAttribute('stop-color', '#00f0ff');
+          colorB.setAttribute('stop-color', '#ffbe0b');
+          colorC.setAttribute('stop-color', '#2ed573');
+        }
+        spikesSvg.style.transform = 'scale(1.12) rotate(-5deg)';
+        setTimeout(() => { spikesSvg.style.transform = 'scale(1) rotate(0deg)'; }, 350);
+      });
+    });
+
+    // --- 9. Screen Sparkle / Confetti Particle Engine ---
+    const fxCanvas = document.getElementById('fxCanvas');
+    const fxCtx = fxCanvas.getContext('2d');
+    let fxW = fxCanvas.width = window.innerWidth;
+    let fxH = fxCanvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      fxW = fxCanvas.width = window.innerWidth;
+      fxH = fxCanvas.height = window.innerHeight;
+    });
+
+    const sparkles = [];
+
+    function triggerBurstAt(x, y) {
+      const colors = ['#00f0ff', '#ff3355', '#ffbe0b', '#ffffff', '#ff9ff3'];
+      for (let i = 0; i < 45; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 3 + Math.random() * 8;
+        sparkles.push({
+          x: x,
+          y: y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          size: 3 + Math.random() * 5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          life: 1.0,
+          decay: 0.015 + Math.random() * 0.02
+        });
+      }
+    }
+
+    function triggerScreenSparkles() {
+      triggerBurstAt(window.innerWidth * 0.5, window.innerHeight * 0.4);
+      setTimeout(() => triggerBurstAt(window.innerWidth * 0.35, window.innerHeight * 0.5), 180);
+      setTimeout(() => triggerBurstAt(window.innerWidth * 0.65, window.innerHeight * 0.5), 320);
+    }
+
+    function renderSparkles() {
+      fxCtx.clearRect(0, 0, fxW, fxH);
+      for (let i = sparkles.length - 1; i >= 0; i--) {
+        const s = sparkles[i];
+        s.x += s.vx;
+        s.y += s.vy;
+        s.vy += 0.15; // light gravity
+        s.vx *= 0.98;
+        s.life -= s.decay;
+
+        if (s.life <= 0) {
+          sparkles.splice(i, 1);
+          continue;
+        }
+
+        fxCtx.fillStyle = s.color;
+        fxCtx.globalAlpha = s.life;
+        fxCtx.shadowColor = s.color;
+        fxCtx.shadowBlur = 10;
+        fxCtx.beginPath();
+        fxCtx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        fxCtx.fill();
+        fxCtx.shadowBlur = 0;
+      }
+      fxCtx.globalAlpha = 1.0;
+      requestAnimationFrame(renderSparkles);
+    }
+    renderSparkles();
+
+    // --- 10. Flow State Mode & Buttons Actions ---
+    const flowBtn = document.getElementById('flowModeBtn');
+    let flowActive = false;
+
+    flowBtn.addEventListener('click', () => {
+      flowActive = !flowActive;
+      sound.playPop(500, 0.1);
+      if (flowActive) {
+        flowBtn.classList.add('active');
+        document.body.style.filter = 'contrast(1.1) saturate(1.2)';
+        cadence = 250;
+        cadenceSlider.value = 250;
+        cadenceVal.textContent = '250 SPM';
+        triggerScreenSparkles();
+      } else {
+        flowBtn.classList.remove('active');
+        document.body.style.filter = 'none';
+        cadence = 215;
+        cadenceSlider.value = 215;
+        cadenceVal.textContent = '215 SPM';
+      }
+      updateTelemetry();
+    });
+
+    document.getElementById('btnSprintSim').addEventListener('click', () => {
+      sound.playStartingGun();
+      cadence = 265;
+      cadenceSlider.value = 265;
+      cadenceVal.textContent = '265 SPM';
+      updateTelemetry();
+      triggerScreenSparkles();
+      document.getElementById('runnerCard').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('btnExploreBio').addEventListener('click', () => {
+      sound.playPop(520, 0.08);
+      document.getElementById('cardPB').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('btnSoundTrigger').addEventListener('click', () => {
+      sound.playVictoryChord();
+      triggerScreenSparkles();
+    });
+
+    document.getElementById('scrollTopLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      sound.playPop(620, 0.06);
+    });
+
+    // Initialize telemetry
+    updateTelemetry();
+  </script>
+</body>
+</html>
